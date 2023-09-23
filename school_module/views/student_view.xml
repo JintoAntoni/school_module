@@ -1,0 +1,28 @@
+<!--<odoo>-->
+<!--    <record model="ir.ui.view" id="student_view_form">-->
+<!--        <field name="name">Student</field>-->
+<!--        <field name="model">school.student</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <group>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="dob"/>-->
+<!--                    <field name="parent_name"/>-->
+<!--                    <field name="standard"/>-->
+<!--                </group>-->
+<!--                <field name="age"/>-->
+<!--                &lt;!&ndash;                       attrs="{'invisible': ['&amp;',('school_class', '=', False),('school_division', '=', False)]}"/>&ndash;&gt;-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+<!--    <record model="ir.actions.act_window" id="student_action_window">-->
+<!--        <field name="name">Student</field>-->
+<!--        <field name="res_model">school.student</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
+
+<!--    -->
+
+<!--</odoo>-->

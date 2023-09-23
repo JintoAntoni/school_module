@@ -1,0 +1,195 @@
+<odoo>
+    <data>
+
+        <!-- Form view of the school view  -->
+        <record model="ir.ui.view" id="school_form_view">
+            <field name="name">School</field>
+            <field name="model">school.school</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <group>
+                            <field name="is_school"/>
+                        </group>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <!--  student form view-->
+        <record model="ir.ui.view" id="school_student_view_form">
+            <field name="name">School student</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_name"/>
+                        <field name="standard"/>
+                        <field name="seats_avail"/>
+                        <field name="gender"/>
+                        <field name="dob"/>
+                        <field name="age"/>
+                        <field name="address"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+        <!--    division form view-->
+        <record model="ir.ui.view" id="student_division_view_form">
+            <field name="name">School Division</field>
+            <field name="model">school.division</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="name"/>
+                    <field name="seq_number"/>
+                </form>
+            </field>
+        </record>
+
+
+        <!--    class form view-->
+        <record model="ir.ui.view" id="school_class_view_form">
+            <field name="name">School Class</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="seq_number"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <!--    standard form view-->
+        <record model="ir.ui.view" id="school_standard_view_form">
+            <field name="name">Standard</field>
+            <field name="model">school.standards</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="seq_number"/>
+                        <field name="school_class"/>
+                        <field name="school_division"/>
+                        <field name="number_of_seats"/>
+
+
+                    </group>
+                    <field name="standard"
+                           attrs="{'invisible': ['&amp;',('school_class', '=', False),('school_division', '=', False)]}"/>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <!--        standard action-->
+        <record model="ir.actions.act_window" id="standard_action_window">
+            <field name="name">standard</field>
+            <field name="res_model">school.standards</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        class action-->
+        <record model="ir.actions.act_window" id="school_class_action_window">
+            <field name="name">school class</field>
+            <field name="res_model">school.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="school_student_action_window">
+            <field name="name">school student</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="school_action_window">
+            <field name="name">school</field>
+            <field name="res_model">school.school</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="division_action_window">
+            <field name="name">student division</field>
+            <field name="res_model">school.division</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem
+                id="school_menu_root"
+                name="School"/>
+
+        <menuitem
+                id="school_student_menu"
+                name="Admission"
+                parent="school_menu_root"
+                action="school_module.school_student_action_window"
+                sequence="1"/>
+        <menuitem
+                id="master_menu"
+                name="Master"
+                parent="school_menu_root"
+                sequence="2"/>
+
+        <menuitem
+                id="school_menu"
+                name="School"
+                parent="master_menu"
+                action="school_module.school_action_window"/>
+
+
+        <menuitem
+                id="division_menu"
+                name="Division"
+                parent="master_menu"
+                action="school_module.division_action_window"
+                sequence="3"/>
+
+        <menuitem
+                id="class_menu"
+                name="Class"
+                parent="master_menu"
+                action="school_module.school_class_action_window"
+                sequence="2"/>
+        <menuitem
+                id="standard_menu"
+                name="Standard"
+                parent="master_menu"
+                action="school_module.standard_action_window"
+                sequence="4"/>
+
+
+        <!--        action="school_module.school_action_window"-->
+
+        <!--
+            <menuitem name="school_module" id="school_module.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="school_module.menu_1" parent="school_module.menu_root"/>
+            <menuitem name="Menu 2" id="school_module.menu_2" parent="school_module.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="school_module.menu_1_list" parent="school_module.menu_1"
+                      action="school_module.action_window"/>
+            <menuitem name="Server to list" id="school_module" parent="school_module.menu_2"
+                      action="school_module.action_server"/>
+        -->
+    </data>
+</odoo>

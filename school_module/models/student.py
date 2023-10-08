@@ -19,6 +19,9 @@ class school_Student(models.Model):
     gender = fields.Selection([
         ('male', "Male"), ('female', "Female"), ('other', "Other")],
         string="Gender", default='male')
+    company_id = fields.Many2one('res.company',default=lambda self: self.env.company)
+    student_image = fields.Image("Image")
+
 
 
     @api.onchange('standard')

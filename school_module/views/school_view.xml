@@ -25,6 +25,9 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
+<!--                                  <field name="image_1920" type="base64" file="hr/static/img/employee_al-image.jpg"/>-->
+
+                        <field name="student_image" type="base64"/>
                         <field name="name"/>
                         <field name="parent_name"/>
                         <field name="standard"/>
@@ -32,6 +35,7 @@
                         <field name="gender"/>
                         <field name="dob"/>
                         <field name="age"/>
+
                         <field name="address"/>
                     </group>
 

@@ -1,24 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
-    </data>
+    <!--    <template>-->
+
+    <record id="student_menu1" model="website.menu">
+        <field name="name">Student</field>
+        <field name="url">/student</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">35</field>
+
+    </record>
+
+    <record id="add_student_form" model="website.menu">
+        <field name="name">Add Student</field>
+        <field name="url">/add/student</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">36</field>
+
+    </record>
+
+
+    <template id="school_module.student_template" name="Students">
+        <t t-call="website.layout">
+        <div class="container">
+            <h1>Partner Cards</h1>
+            <div class="row">
+                <t t-foreach="student" t-as="partner">
+                    <div class="col-md-4 mb-2">
+                        <div class="card">
+<!--                            <img t-att-src="partner.student_image" class="card-img-top" alt="Partner Image"/>-->
+                            <div class="card-body">
+                                <h5 class="card-title"><t t-esc="partner.name.name"/></h5>
+                                <p class="card-text">Gender: <t t-esc="partner.gender"/></p>
+                                <button type="button" id="deleteStudent" class="del_student btn btn-danger">Danger</button>
+<!--                                <p class="card-text">Phone: <t t-esc="partner.phone"/></p>-->
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+    </template>
+
+
+    <template id="school_module.student_application_form" name="Students">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="oe_structure">
+                    <div class="page">
+                        <div class="container">
+                            <h1>Student Application Form</h1>
+
+                            <form action="/create/student" method="post">
+                                <div class="form-group row col-md-6 pb24">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control-plaintext" name="student_name"
+                                               id="staticEmail" placeholder="e.g. Arun"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row col-md-6 pb24">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Gender</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control-plaintext" id="staticEmail" name="gender"
+                                               placeholder="e.g. Arun"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row col-md-6 pb24">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">standard</label>
+                                    <div class="col-sm-10">
+                                        <div class="col-md-6 col-sm-6 colxs-12">
+                                            <span class="input-section">
+                                                <input type="hidden" class="form-control" id="coach_state"
+                                                       name="standard"/>
+                                                <select id="state_id" name="state_id" class="form-control">
+                                                    <option value="">-- Select Standard --</option>
+                                                    <t t-foreach="standard" t-as="standard">
+<!--                                                        <span><t t-esc="standard.name"/></span>-->
+<!--                                                                    <option t-att-value="standard.id"><t t-esc="standard.name"/>-->
+
+<!--                                                        </option>-->
+                                                    </t>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control-plaintext" id="staticEmail"
+                                               name="standard" placeholder="e.g. Arun"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row col-md-6 pb24">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control-plaintext" id="staticEmail"
+                                               name="description" placeholder="e.g. Arun"/>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-secondary">Create Admission</button>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="school_module.student_created" name="Students">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="page">
+                        <div align="center">
+                         <span>  <h1>Student <t t-esc="partner" /> Created Successfully</h1>      </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
 </odoo>

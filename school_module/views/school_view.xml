@@ -25,20 +25,22 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-<!--                                  <field name="image_1920" type="base64" file="hr/static/img/employee_al-image.jpg"/>-->
-
-                        <field name="student_image" type="base64"/>
-                        <field name="name"/>
-                        <field name="parent_name"/>
-                        <field name="standard"/>
-                        <field name="seats_avail"/>
-                        <field name="gender"/>
-                        <field name="dob"/>
-                        <field name="age"/>
-
-                        <field name="address"/>
+                        <!--                                  <field name="image_1920" type="base64" file="hr/static/img/employee_al-image.jpg"/>-->
+                        <group>
+                            <field name="name"/>
+                            <field name="parent_name"/>
+                            <field name="standard"/>
+                            <field name="seats_avail"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="address"/>
+                        </group>
+                        <group class="text-muted">
+                             <field name="student_image" widget="image"
+                                   options='{"zoom": false, "preview_image":"avatar_128"}'/>
+                        </group>
                     </group>
-
                 </form>
             </field>
         </record>
@@ -71,11 +73,9 @@
                             <field name="name"/>
                         </group>
                     </group>
-
                 </form>
             </field>
         </record>
-
         <!--    standard form view-->
         <record model="ir.ui.view" id="school_standard_view_form">
             <field name="name">Standard</field>

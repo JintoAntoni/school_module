@@ -11,6 +11,20 @@ class SchoolModule(http.Controller):
         students.update({'student':student})
         return request.render("school_module.student_template",students)
 
+    @http.route('/custom', type="http", auth="public", website=True)
+    def custom(self, **kw):
+        print("xxxxxxxxxxxxxxxxxx111111111111111111111111111111")
+        students = request.env['school.student'].search([])
+        # standard = request.env['school.standards'].sudo().search([])
+        # students = {}
+        # standard = {'standard': standard}
+        # students.update({'student': student})
+        student = {'students': students}
+        return request.render("school_module.custom_webpage",student)
+
+
+
+
     @http.route('/add/student', type="http", auth="public", website=True)
     def addStudent(self, **kw):
         standard = request.env['school.standards'].sudo().search([])
@@ -23,7 +37,6 @@ class SchoolModule(http.Controller):
     @http.route('/create/student', type="http", auth="public",csrf=False, website=True)
     def createStudent(self, **kw):
 
-        print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",kw)
         val_dict = {}
         if kw.get('description'):
             description = kw.get('description')
@@ -38,7 +51,6 @@ class SchoolModule(http.Controller):
 
     @http.route('/delete_student', type="http", auth="public", website=True,csrf=False)
     def deleteStudent(self, **kw):
-        print("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
         student = request.env['school.student'].sudo().search([('name', '=', kw.get('student_name'))])
         print(student)
         for stud in student:

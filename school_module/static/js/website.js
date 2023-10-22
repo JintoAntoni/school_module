@@ -14,4 +14,20 @@ odoo.define('school_module.website',
 
     });
 
+    $(document).ready(function () {
+                $('.student_class').click(function(ev){
+                    console.log("-----------------",$('.student_class'))
+                    $('.student_class').removeClass('active').css('background-color','unset')
+                    console.log("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",ev)
+                    $(ev.currentTarget).addClass('active').css('background-color','darkgray')
+                })
+                 var tableRow = $('.student_class')
+                 console.log("Table Row---->>",tableRow)
+                 var arrayRows = Array.from(tableRow);
+                 console.log("arrayRows------->>",arrayRows)
+
+
+
+
+});
 });

@@ -17,7 +17,7 @@
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.4',
+    'version': '0.5',
 
     # any module necessary for this one to work correctly
     'depends': ['base','website'],
@@ -28,7 +28,9 @@
         'security/ir.model.access.csv',
         'views/school_view.xml',
         'views/templates.xml',
-        'reports/reports.xml'
+        'views/weather.xml',
+        'reports/reports.xml',
+
     ],
 
 'assets': {

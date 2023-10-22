@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import school,student
+from . import school,student,weather
